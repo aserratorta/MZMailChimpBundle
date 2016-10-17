@@ -58,7 +58,7 @@ class MCList extends HttpClient
      * Set mailchimp double optin
      * 
      * @deprecated due to spelling mistake
-     * @param boolean $doubleOptin boolen to double optin
+     * @param boolean $doubleOptin boolean to double optin
      */
     public function setDoubleOption($doubleOptin)
     {
@@ -68,7 +68,7 @@ class MCList extends HttpClient
     /**
      * Set mailchimp double optin
      *
-     * @param boolean $doubleOptin boolen to double optin
+     * @param boolean $doubleOptin boolean to double optin
      */
     public function setDoubleOptin($doubleOptin)
     {
@@ -98,7 +98,7 @@ class MCList extends HttpClient
     /**
      * Set mailchimp send welcome
      *
-     * @param boolean $sendWelcome boolen to send welcome email
+     * @param boolean $sendWelcome boolean to send welcome email
      */
     public function SendWelcome($sendWelcome)
     {
@@ -142,7 +142,7 @@ class MCList extends HttpClient
      *
      * @param string $email user email
      *
-     * @return boolen
+     * @return boolean
      */
     public function Subscribe($email = null)
     {
@@ -169,7 +169,7 @@ class MCList extends HttpClient
      *
      * @param string $email user email
      *
-     * @return boolen
+     * @return boolean
      */
     public function UnSubscribe($email)
     {
@@ -270,25 +270,6 @@ class MCList extends HttpClient
     	$data = $this->makeRequest($apiCall, $payload);
     	return json_decode($data);
     }
-
-    /**
-     * delete emails from segment
-     * @param int $seg_id
-     * @param array $batch
-     * @return mixed
-     */
-    public function listStaticSegmentMembersDel($seg_id, $batch = array())
-    {
-        $payload = array(
-                        'id'    => $this->listId,
-                        'seg_id' => $seg_id,
-                        'batch' => $batch,
-        );
-        $apiCall = 'listStaticSegmentMembersDel';
-        $data = $this->makeRequest($apiCall, $payload);
-        return json_decode($data);
-    }
-
     
     /**
      * get all segments
@@ -302,20 +283,5 @@ class MCList extends HttpClient
     	$apiCall = 'listStaticSegments';
     	$data = $this->makeRequest($apiCall, $payload);
     	return json_decode($data);
-    }
-
-
-    /**
-     * Get all interest groupings
-     * @return array
-     */
-    public function listInterestGroupings()
-    {
-        $payload = array(
-            'id'	=> $this->listId,
-        );
-        $apiCall = 'listInterestGroupings';
-        $data = $this->makeRequest($apiCall, $payload);
-        return json_decode($data);
     }
 }
